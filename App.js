@@ -1,16 +1,20 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+//import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Entypo } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
+import {
+  Entypo,
+  AntDesign,
+  Ionicons,
+  Feather,
+  MaterialCommunityIcons,
+  FontAwesome,
+  SimpleLineIcons,
+} from "@expo/vector-icons";
+
 import Profile from "./screens/Profile";
 import Settings from "./screens/Settings";
+import { useFonts } from 'expo-font';
 
 import ListOfItems from "./screens/ListOfItems";
 import Preview from "./screens/Preview";
@@ -33,6 +37,15 @@ import Preview from "./screens/Preview";
 
 const Tab = createBottomTabNavigator();
 export default function MyBottomTabs() {
+  const [fontsloaded] = useFonts({
+    Poppins_Black: require("./assets/fonts/Poppins/Poppins-ExtraBold.ttf"),
+    Poppins_Medium: require("./assets/fonts/Poppins/Poppins-Medium.ttf")
+  })
+
+  if(!fontsloaded) {
+    return null
+  }
+
   return (
     <NavigationContainer>
       <Tab.Navigator>
@@ -77,37 +90,41 @@ export default function MyBottomTabs() {
           name="Preview"
           component={Preview}
           options={{
-            title: "Discover",
+            title: "Read More",
             headerTitleAlign: "left",
             headerStyle: {
-              height: 120
+              height: 120,
             },
-            headerLeft:()=> {
-              return (
-                <View style={styles.headerBefore}></View>
-              )
+            headerLeft: () => {
+              return <View style={styles.headerBefore}></View>;
             },
             headerRight: () => {
               return (
                 <View style={styles.iconView}>
-                  <FontAwesome
+                 <TouchableOpacity>
+                 <FontAwesome
                     name="headphones"
                     size={24}
                     color="black"
                     style={styles.righticon}
                   />
-                  <Entypo
+                 </TouchableOpacity>
+                 <TouchableOpacity>
+                 <Entypo
                     name="heart-outlined"
                     size={24}
                     color="black"
                     style={styles.righticon}
                   />
-                  <Entypo
+                 </TouchableOpacity>
+                  <TouchableOpacity>
+                  <SimpleLineIcons
                     name="share"
-                    size={24}
+                    size={22}
                     color="black"
                     style={styles.righticon}
                   />
+                  </TouchableOpacity>
                 </View>
               );
             },
@@ -151,7 +168,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   iconView: {
-    flexDirection:'row',
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -162,19 +179,18 @@ const styles = StyleSheet.create({
 
   righticon: {
     marginRight: 20,
-    color: '#353535'
+    color: "#353535",
   },
 
   headerBefore: {
-        width:255,
-        height: 225,
-        borderTopWidth: 120,
-        borderLeftWidth: 10,
-        borderRadius: 1,
-        borderColor: 'dodgerblue',
-        position: 'absolute',
-        top: -24,
-        left:0,
-
-  }
+    width: 255,
+    height: 225,
+    borderTopWidth: 120,
+    borderLeftWidth: 10,
+    borderRadius: 1,
+    borderColor: "dodgerblue",
+    position: "absolute",
+    top: -24,
+    left: 0,
+  },
 });

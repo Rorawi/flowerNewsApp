@@ -6,7 +6,7 @@ import img2 from '../assets/images/blueflower2.jpg'
 import img3 from '../assets/images/blueflower3.jpg'
 import profile from '../assets/images/profile.png'
 import img4 from '../assets/images/blueflower4.jpg'
-import img5 from '../assets/images/flower5.jpg'
+import img5 from '../assets/images/blueflower5.jpg'
 import img6 from '../assets/images/flower6.jpg'
 // import img7 from '../assets/images/flower7.jpg'
 // import img8 from '../assets/images/flower8.jpg'
@@ -45,8 +45,8 @@ const ListOfItems = () => {
         },
         {
             img:img4,
-            topic: 'Does Cry is January Actually Improve Your Health',
-            author: 'Yaw Preko',
+            topic: 'Blue Is My Favourite Color - It Is Indeed',
+            author: 'Adwoa Winifred',
             minutes: `${ 8 + minRead}`,
             profile: profile,
             color: 'pink',

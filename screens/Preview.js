@@ -1,6 +1,6 @@
 import { useFonts } from 'expo-font';
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { Image } from 'react-native';
 import { View,Text } from 'react-native';
 
@@ -18,6 +18,7 @@ const Preview = ({route}) => {
     
     
     return (
+      <ScrollView>
       <View style={styles.container}>
         <Image source={img} style={styles.img}/>
         <View>
@@ -32,6 +33,7 @@ const Preview = ({route}) => {
             <Text style={styles.article}>{article}</Text>
         </View>
       </View>
+      </ScrollView>
     );
 }
 
@@ -42,9 +44,10 @@ const styles = StyleSheet.create({
 
     img: {
         width:350,
-        height: 280,
+        height: 260,
         alignSelf: 'center',
-        marginTop: 20
+        marginTop: 20,
+        marginBottom: 15
     },
 
     nameAndMinutes: {
@@ -57,7 +60,7 @@ const styles = StyleSheet.create({
       width:30,
       height:30,
       borderRadius: 15,
-      marginRight: 3
+      marginRight: 5
   },
 
   topic: {
@@ -70,12 +73,12 @@ const styles = StyleSheet.create({
       fontFamily: "Poppins_Medium",
       color: 'grey',
       fontSize: 13,
-      marginRight: 15
+      marginRight: 10
     },
 
     minutes: {
       fontSize: 12,
-      marginLeft: 9
+      marginLeft: 9,
     },
 
 
